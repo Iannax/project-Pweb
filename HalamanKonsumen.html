@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selamat datang di Best Hotel, tempat terbaik untuk menginap.">
+    <meta name="keywords" content="hotel, penginapan, fasilitas, kolam renang, pusat kebugaran">
+    <title>Hotel Santika</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #004d00, #007000);
+            color: #fff;
+        }
+        .navbar {
+            background-color: rgba(108, 117, 125, 0.9); /* Transparansi */
+            transition: background-color 0.3s;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffc107; /* Warna hover */
+        }
+        .header-image {
+            border-radius: 50%; /* Membulatkan gambar logo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+        }
+        .video-container {
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+            padding: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
+        }
+    .uniform-image:hover {
+        transform: scale(1.03); /* Sedikit zoom saat di-hover */
+    }
+    .uniform-image {
+        width: 100%; /* Memastikan gambar pas dengan kolom */
+        height: 200px; /* Menjaga tinggi gambar seragam */
+        object-fit: cover; /* Proporsi gambar tetap terjaga */
+        border-radius: 5px; /* Membuat sudut gambar sedikit melengkung */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Memberikan bayangan lembut */
+    }
+
+    p {
+        font-size: 14px; /* Ukuran teks kecil tapi tetap terbaca */
+        color: #f8f9fa; /* Warna teks terang untuk menonjolkan */
+        background-color: rgba(0, 0, 0, 0.6); /* Memberikan latar belakang gelap transparan */
+        padding: 5px; /* Memberi jarak dalam teks */
+        border-radius: 5px; /* Membuat sudut latar tulisan melengkung */
+        text-align: center; /* Teks rata tengah */
+    }
+
+    p strong {
+        font-size: 16px;
+        color: #ffc107; /* Warna emas untuk judul */
+    }
+
+        .card-fasilitas {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-fasilitas img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .card-fasilitas:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-overlay {
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6); /* Overlay hitam semi transparan */
+        color: #fff;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .card-fasilitas:hover .card-overlay {
+        opacity: 1;
+    }
+
+    .card-overlay h4 {
+        font-size: 18px;
+        margin: 5px 0;
+        font-weight: bold;
+        color: #ffc107; /* Warna emas */
+    }
+
+    .card-overlay p {
+        font-size: 14px;
+        margin: 0;
+        color: #f8f9fa; /* Warna terang untuk deskripsi */
+    }
+        form {
+            background-color: rgba(255, 255, 255, 0.1); /* Transparansi lembut */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Bayangan */
+        }
+        form .form-control, form .form-select {
+            background-color: rgba(255, 255, 255, 0.2); /* Latar belakang form */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        form .form-control:focus, form .form-select:focus {
+            outline: none;
+            box-shadow: 0 0 5px #ffc107; /* Sorotan saat fokus */
+        }
+        form .btn {
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s; /* Animasi hover */
+        }
+        form .btn-primary:hover {
+            background-color: #0056b3; /* Warna hover */
+            transform: translateY(-2px); /* Efek tombol naik */
+        }
+        form .btn-success:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        form .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
+        footer {
+            background-color: #343a40; /* Warna footer lebih gelap */
+            color: white;
+            border-top: 3px solid #ffc107; /* Garis kuning di atas */
+        }
+        h3 {
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 2px solid #ffc107; /* Garis bawah untuk judul */
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        h4 {
+            font-weight: 500;
+            color: #ffc107; /* Warna emas untuk heading */
+        }
+        #output {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+            figure {
+            margin: 0;
+            padding: 0;
+        }
+            figcaption {
+            color: #ffc107; /* Warna teks emas */
+            font-size: 14px;
+            line-height: 1.5;
+        }
+            figcaption small {
+            color: #ddd; /* Warna lebih terang untuk deskripsi */
+        }
+    </style>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h3">Hotel Santika</h1>
+            <img src="/Web1-Apryan/Modul1/gambar/Logo_HS.png" alt="Logo Hotel Santika" class="header-image" height="100px" width="100px"> 
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kamar">Kamar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#fasilitas">Fasilitas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pesan">Pesan Sekarang</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>    
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/HEOJGuU6gmo" class="w-100" height="200" allowfullscreen></iframe>
+                </div>
+                <div class="video-container mt-3">
+                    <iframe src="https://www.youtube.com/embed/EQPcKe0LDdQ" class="w-100" height="200" allowfullscreen></iframe>
+                </div>
+                <div class="video-container mt-3">
+                    <iframe src="https://www.youtube.com/embed/jgL87f3WTxc" class="w-100" height="200" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <h3 class="text-center">Kamar</h3>
+                <div class="row g-3">
+                    <div id="kamar" class="col-md-4">
+                        <img src="/Web1-Apryan/Modul1/gambar/h1.jpeg" alt="Kamar Standard" class="img-fluid uniform-image">
+                        <p class="text-center mt-2">
+                            <strong>Kamar Standard</strong><br>
+                            Kamar nyaman dengan fasilitas dasar. Cocok untuk perjalanan singkat.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/Web1-Apryan/Modul1/gambar/h2.jpeg" alt="Kamar Deluxe" class="img-fluid uniform-image">
+                        <p class="text-center mt-2">
+                            <strong>Kamar Deluxe</strong><br>
+                            Ruang lebih luas dengan pemandangan indah, cocok untuk liburan keluarga.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/Web1-Apryan/Modul1/gambar/h3.jpeg" alt="Kamar Family" class="img-fluid uniform-image">
+                        <p class="text-center mt-2">
+                            <strong>Kamar Family</strong><br>
+                            Kamar luas dengan fasilitas premium, ideal untuk keluarga besar.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/Web1-Apryan/Modul1/gambar/h4.jpeg" alt="Junior Room" class="img-fluid uniform-image">
+                        <p class="text-center mt-2">
+                            <strong>Kamar Junior Room</strong><br>
+                            Kamar yang menawarkan kenyamanan dan privasi lebih dibandingkan kamar standar atau deluxe.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/Web1-Apryan/Modul1/gambar/h5.jpeg" alt="Superior Room" class="img-fluid uniform-image">
+                        <p class="text-center mt-2">
+                            <strong>Kamar Superior</strong><br>
+                            Kamar yang ukurannya lebih luas daripada standard room, dengan fasilitas yang hampir sama.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/Web1-Apryan/Modul1/gambar/h6.jpeg" alt="Kamar Family 2" class="img-fluid uniform-image">
+                        <p class="text-center mt-2">
+                            <strong>Kamar Family</strong><br>
+                            Tempat ideal untuk keluarga besar, dilengkapi ruang tamu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+                <div id="fasilitas" class="mt-4">
+                    <h3 class="text-center">Fasilitas</h3>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="card-fasilitas">
+                                <img src="/Web1-Apryan/Modul1/gambar/gym.jpeg" alt="Gym" class="img-fluid uniform-image">
+                                <div class="card-overlay">
+                                    <h4>Gym</h4>
+                                    <p>Fasilitas kebugaran dengan alat modern untuk menjaga kesehatan Anda.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-fasilitas">
+                                <img src="/Web1-Apryan/Modul1/gambar/meeting.jpeg" alt="Ruang Meeting" class="img-fluid uniform-image">
+                                <div class="card-overlay">
+                                    <h4>Ruang Meeting</h4>
+                                    <p>Ruang meeting berkapasitas besar dengan fasilitas lengkap untuk pertemuan Anda.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-fasilitas">
+                                <img src="/Web1-Apryan/Modul1/gambar/Swimming.jpeg" alt="Kolam Renang" class="img-fluid uniform-image">
+                                <div class="card-overlay">
+                                    <h4>Kolam Renang</h4>
+                                    <p>Kolam renang dengan desain modern untuk bersantai bersama keluarga.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                           
+<div id="pesan" class="mt-4">
+    <h3 class="text-center">Pemesanan</h3>
+    <form id="bookingForm">
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama Pemesan</label>
+            <input type="text" id="nama" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+            <select id="jenisKelamin" class="form-select" required>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="noIdentitas" class="form-label">Nomor Identitas</label>
+            <input type="text" id="noIdentitas" class="form-control" pattern="\d{16}" required>
+            <div class="form-text">Harus berisi 16 digit angka</div>
+        </div>
+        <div class="mb-3">
+            <label for="tipeKamar" class="form-label">Tipe Kamar</label>
+            <select id="tipeKamar" class="form-select" required>
+                <option value="Standard">Standard - Rp500,000</option>
+                <option value="Deluxe">Deluxe - Rp800,000</option>
+                <option value="Family">Family - Rp1,200,000</option>
+                <option value="Junior">Junior - Rp1,000,000</option>
+                <option value="Superior">Superior - Rp1,400,000</option>
+                <option value="Family 2">Family - Rp1,300,000</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="tanggalPesan" class="form-label">Tanggal Pesan</label>
+            <input type="date" id="tanggalPesan" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="durasiMenginap" class="form-label">Durasi Menginap (hari)</label>
+            <input type="number" id="durasiMenginap" class="form-control" min="1" required>
+        </div>
+        <div class="form-check mb-3">
+            <input type="checkbox" id="breakfast" class="form-check-input">
+            <label for="breakfast" class="form-check-label">Termasuk Breakfast (+Rp80,000)</label>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-primary" onclick="hitungTotal()">Hitung Total Harga</button>
+            <button type="button" class="btn btn-success" onclick="simpanPesanan()">Simpan</button>
+            <button type="reset" class="btn btn-secondary">Batal</button>
+        </div>
+    </form>
+    <div class="mt-4" id="output"></div>
+</div>
+<script>
+    let totalHarga = 0;
+
+    function hitungTotal() {
+        const tipeKamar = document.getElementById('tipeKamar').value;
+        const hargaKamar = tipeKamar === 'Standard' ? 500000 : tipeKamar === 'Deluxe' ? 800000 : 1200000;
+        const durasi = parseInt(document.getElementById('durasiMenginap').value);
+        const breakfast = document.getElementById('breakfast').checked;
+
+        totalHarga = hargaKamar * durasi;
+
+        if (durasi > 3) totalHarga *= 0.9;
+
+        if (breakfast) totalHarga += 80000;
+
+        alert(`Total Harga: Rp${totalHarga.toLocaleString('id-ID')}`);
+    }
+
+    function simpanPesanan() {
+        if (totalHarga === 0) {
+            alert("Silakan hitung total harga terlebih dahulu!");
+            return;
+        }
+
+        const output = `
+            <h4>Resume Pemesanan</h4>
+            <p>Nama: ${document.getElementById('nama').value}</p>
+            <p>Jenis Kelamin: ${document.getElementById('jenisKelamin').value}</p>
+            <p>Nomor Identitas: ${document.getElementById('noIdentitas').value}</p>
+            <p>Tipe Kamar: ${document.getElementById('tipeKamar').value}</p>
+            <p>Tanggal Pesan: ${document.getElementById('tanggalPesan').value}</p>
+            <p>Durasi Menginap: ${document.getElementById('durasiMenginap').value} hari</p>
+            <p>Total Bayar: Rp${totalHarga.toLocaleString('id-ID')}</p>
+        `;
+        document.getElementById('output').innerHTML = output;
+
+        alert("Pesanan berhasil disimpan!");
+    }
+</script>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="text-center py-3">
+        &copy; 2024 Hotel Santika
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

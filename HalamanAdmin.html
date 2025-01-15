@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Santika Admin Panel</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif; /* Font modern */
+            background: linear-gradient(to bottom, #004d26, #ffffff); /* Gradasi hijau tua ke putih */
+            color: #333;
+        }
+    
+        header {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #003d1a, #004d26); /* Gradasi hijau tua */
+            color: white;
+        }
+    
+        .header-image {
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    
+        navbar {
+            background: linear-gradient(135deg, #808080, #A9A9A9); /* Navbar abu-abu */
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-nav .nav-link {
+            font-weight: bold;
+            transition: color 0.3s ease;
+            color: white;
+        }
+    
+        .navbar-nav .nav-link:hover {
+            color: #c5ee0e; /* Hijau muda pucat */
+        }
+    
+        /* Section Titles */
+        h3.text-center {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #003d1a; /* Hijau tua */
+        }
+    
+        /* Cards */
+        .card {
+            border: none;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+    
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        }
+    
+        .uniform-image {
+            border-radius: 8px;
+            object-fit: cover;
+            height: 200px;
+            width: 100%;
+        }
+    
+        /* Buttons */
+        .btn {
+            font-family: 'Poppins', sans-serif;
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .btn-primary {
+            background: linear-gradient(135deg, #003d1a, #004d26); /* Gradasi hijau tua */
+            color: white;
+            border: none;
+        }
+    
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #004d26, #003d1a);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+    
+        .btn-danger {
+            background: linear-gradient(135deg, #800000, #990000); /* Merah gelap */
+            color: white;
+            border: none;
+        }
+    
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #990000, #800000);
+        }
+    
+        .btn-success {
+            background: linear-gradient(135deg, #003d1a, #004d26);
+            border: none;
+            color: white;
+        }
+    
+        .btn-success:hover {
+            background: linear-gradient(135deg, #004d26, #003d1a);
+        }
+    
+        /* Modals */
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Tables */
+        table.table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    
+        table thead {
+            background: linear-gradient(135deg, #003d1a, #004d26);
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    
+        table tbody tr:hover {
+            background: #f1f1f1;
+        }
+    
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #003d1a, #004d26);
+            color: white;
+            padding: 15px;
+            font-size: 0.9rem;
+            box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>       
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<body>
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h3">Hotel Santika <br>Admin Panel</h1>
+            <img src="/Web1-Apryan/Modul1/gambar/Logo_HS.png" alt="Logo Hotel Santika" class="header-image" height="100px" width="100px">
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#kamar">Kelola Kamar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#fasilitas">Kelola Fasilitas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pemesan">Data Pemesan</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <!-- Kamar -->
+        <div id="kamar">
+            <h3 class="text-center">Kelola Kamar</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <img src="/Web1-Apryan/Modul1/gambar/h1.jpeg" alt="Kamar 1" class="img-fluid uniform-image">
+                    <div class="text-center action-buttons">
+                        <button class="btn btn-sm btn-primary" onclick="editItem('Kamar 1')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteItem('Kamar 1')">Hapus</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="/Web1-Apryan/Modul1/gambar/h2.jpeg" alt="Kamar 2" class="img-fluid uniform-image">
+                    <div class="text-center action-buttons">
+                        <button class="btn btn-sm btn-primary" onclick="editItem('Kamar 2')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteItem('Kamar 2')">Hapus</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success w-100 h-100 d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#addRoomModal">
+                        Tambah Kamar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Tambah Kamar -->
+        <div class="modal fade" id="addRoomModal" tabindex="-1" aria-labelledby="addRoomModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addRoomModalLabel">Tambah Kamar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addRoomForm">
+                            <div class="mb-3">
+                                <label for="roomName" class="form-label">Nama Kamar</label>
+                                <input type="text" class="form-control" id="roomName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="roomPrice" class="form-label">Harga</label>
+                                <input type="number" class="form-control" id="roomPrice" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="roomImage" class="form-label">Gambar</label>
+                                <input type="file" class="form-control" id="roomImage" accept="image/*" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Referensi elemen penting
+            const addRoomForm = document.getElementById('addRoomForm');
+            const roomContainer = document.getElementById('roomContainer');
+        
+            // Fungsi untuk menangani penambahan kamar
+            addRoomForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Mencegah refresh halaman
+        
+                // Ambil data dari formulir
+                const roomName = document.getElementById('roomName').value;
+                const roomPrice = document.getElementById('roomPrice').value;
+                const roomImage = document.getElementById('roomImage').files[0];
+        
+                // Validasi apakah gambar dipilih
+                if (!roomImage) {
+                    alert('Harap pilih gambar kamar!');
+                    return;
+                }
+        
+                // Buat URL sementara untuk gambar
+                const imageUrl = URL.createObjectURL(roomImage);
+        
+                // Tambahkan kartu kamar baru ke dalam kontainer
+                const roomCard = document.createElement('div');
+                roomCard.className = 'col-md-4';
+                roomCard.innerHTML = `
+                    <div class="card">
+                        <img src="${imageUrl}" class="card-img-top uniform-image" alt="${roomName}">
+                        <div class="card-body">
+                            <h5 class="card-title">${roomName}</h5>
+                            <p class="card-text">Harga: Rp${roomPrice}</p>
+                            <button class="btn btn-sm btn-primary" onclick="editRoom('${roomName}')">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteRoom(this)">Hapus</button>
+                        </div>
+                    </div>
+                `;
+        
+                roomContainer.appendChild(roomCard);
+        
+                // Reset formulir dan tutup modal
+                addRoomForm.reset();
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addRoomModal'));
+                modal.hide();
+            });
+        
+            // Fungsi untuk menghapus kamar
+            function deleteRoom(button) {
+                const card = button.closest('.col-md-4');
+                card.remove();
+            }
+        
+            // Fungsi untuk mengedit kamar (placeholder untuk fitur selanjutnya)
+            function editRoom(roomName) {
+                alert(`Fitur edit untuk kamar "${roomName}" belum diimplementasikan.`);
+            }
+        </script>        
+        <!-- Container for displaying rooms -->
+        <div id="roomContainer" class="row g-3 mt-3">
+            <!-- Existing rooms will be rendered here -->
+        </div>
+        
+        <!-- Fasilitas -->
+        <div id="fasilitas" class="mt-4">
+            <h3 class="text-center">Kelola Fasilitas</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <img src="/Web1-Apryan/Modul1/gambar/gym.jpeg" alt="Gym" class="img-fluid uniform-image">
+                    <div class="text-center action-buttons">
+                        <button class="btn btn-sm btn-primary" onclick="editItem('Gym')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteItem('Gym')">Hapus</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="/Web1-Apryan/Modul1/gambar/meeting.jpeg" alt="Meeting Room" class="img-fluid uniform-image">
+                    <div class="text-center action-buttons">
+                        <button class="btn btn-sm btn-primary" onclick="editItem('Meeting Room')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteItem('Meeting Room')">Hapus</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success w-100 h-100 d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#addFacilityModal">
+                        Tambah Fasilitas
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Data Pemesan -->
+        <div id="pemesan" class="mt-4">
+            <h3 class="text-center">Data Pemesan</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>No. Telepon</th>
+                        <th>Tanggal Check-In</th>
+                        <th>Tanggal Check-Out</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apryan</td>
+                        <td>ian22@gmail.com</td>
+                        <td>08123456789</td>
+                        <td>2025-02-05</td>
+                        <td>2025-02-10</td>
+                    </tr>
+                    <tr>
+                        <td>Eka</td>
+                        <td>eka22@gmail.com</td>
+                        <td>081234667788</td>
+                        <td>2025-02-15</td>
+                        <td>2025-02-20</td>
+                    </tr>
+                    <tr>
+                        <td>Tio</td>
+                        <td>tian18@gmail.com</td>
+                        <td>085221665544</td>
+                        <td>2025-02-25</td>
+                        <td>2025-02-30</td>
+                    </tr>
+                    <tr>
+                        <td>Naldi</td>
+                        <td>naldi69@gmail.com</td>
+                        <td>081221544678</td>
+                        <td>2025-03-05</td>
+                        <td>2025-02-11</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2024 Hotel Santika
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

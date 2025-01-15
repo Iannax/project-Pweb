@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hotel Santika</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #004d26, #27ae60);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .login-card {
+            background: #fff;
+            color: #333;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-card h2 {
+            background: linear-gradient(135deg, #145a32, #27ae60);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #145a32, #27ae60);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #27ae60, #145a32);
+        }
+        .form-control {
+            border-radius: 10px;
+        }
+        .login-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <img src="/Web1-Apryan/Modul1/gambar/Logo_HS.png" alt="Logo Hotel" />
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="mb-3 text-start">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Masukkan username" required>
+            </div>
+            <div class="mb-3 text-start">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Masukkan password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Data login admin dan user (hardcoded)
+        const credentials = [
+            { username: "admin", password: "admin123", role: "admin" },
+            { username: "user1", password: "user123", role: "user" },
+            { username: "user2", password: "user456", role: "user" }
+        ];
+
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Cek apakah username dan password cocok
+            const user = credentials.find(
+                (cred) => cred.username === username && cred.password === password
+            );
+
+            if (user) {
+                alert(`Login berhasil sebagai ${user.role}!`);
+                if (user.role === "admin") {
+                    window.location.href = "HalamanAdmin.html"; // Redirect ke halaman admin
+                } else if (user.role === "user") {
+                    window.location.href = "HalamanKonsumen.html"; // Redirect ke halaman user
+                }
+            } else {
+                alert("Username atau password salah.");
+            }
+        });
+    </script>
+</body>
+</html>
